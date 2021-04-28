@@ -4,16 +4,16 @@ var app = new Vue(
         data: {
             albums: [],
             genres: [],
-            selectedGenre: 'Seleziona',
+            selectedGenre: 'all',
             filteredAlbums: []
         },
         methods: {
-            filterByGenre() {                                
+            filterByGenre() {     
+                console.log('filtrati')                           ;
                 let thisGenre = this.selectedGenre;
-                const filteredAlbums = this.albums.filter((element) => {
-                    return element.genre == thisGenre;
-                });
-                this.filteredAlbums = filteredAlbums;                
+                this.filteredAlbums = this.albums.filter((element) => {
+                    return thisGenre == 'all' || element.genre == thisGenre                    
+                });            
             }
         },
         mounted() {
@@ -31,6 +31,8 @@ var app = new Vue(
                         }
                     })
                     this.genres = arrayGenres;
+
+                    this.filterByGenre();
                 })
         }
     }
