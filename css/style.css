@@ -18,7 +18,10 @@ img {
 /* HEADER */
 header {
     background-color: #2e3b46;
-    padding: 10px;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 header .logo {
@@ -26,17 +29,33 @@ header .logo {
     width: 50px;
 }
 
+header .filter {
+    color: #fff;
+}
+
+.filter label {
+    margin-right: 10px;
+}
+.filter select {
+    padding: 5px;
+    border-radius: 5px;
+    outline: none;
+}
+
 /* MAIN */
 main {
     background-color: #1e2e3c;    
 }
 
-.albums-container {
+.albums-container {    
+    padding: 60px 20px;
+    min-height: calc( 100vh - 70px);
+}
+.all-albums,
+.filtered-albums {
     display: flex;
     flex-wrap: wrap;
-    padding: 60px 20px;
     justify-content: center;
-    align-content: stretch;
 }
 
 .single-album-container {

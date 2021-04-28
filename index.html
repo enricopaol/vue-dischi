@@ -20,6 +20,27 @@
             <div class="logo">
                 <img src="img/download.png" alt="logo-spotify">
             </div>
+
+            <div class="filter">
+                <label for="filter-genre">Filtra per genere:</label>
+                <select 
+                    @change="filterByGenre" 
+                    name="filter-genre" 
+                    id="filter-genre"
+                    v-model="selectedGenre"
+                    >
+                    <option value="Seleziona" selected="true" disabled="disabled">Seleziona</option>
+                    <option value="all">All</option>
+
+                    <option
+                         v-for="genre in genres" 
+                        :value="genre"                        
+                    >
+                        {{genre}}
+                    </option>
+
+                </select>
+            </div>
         </header>
 
         <!-- MAIN -->
@@ -27,14 +48,36 @@
 
             <div class="albums-container">
 
-                <div v-for="album in albums" class="single-album-container">
-                    <div class="single-album">
-                        <img :src="album.poster" :alt="album.title">
-                        <div class="album-title">{{album.title}}</div>
-                        <div class="album-author">{{album.author}}</div>
-                        <div class="album-year">{{album.year}}</div>
+                <div class="all-albums" v-if="selectedGenre === 'Seleziona' || selectedGenre === 'all'" >
+
+                    <div                         
+                        v-for="album in albums" 
+                        class="single-album-container"
+                    >
+                        <div class="single-album">
+                            <img :src="album.poster" :alt="album.title">
+                            <div class="album-title">{{album.title}}</div>
+                            <div class="album-author">{{album.author}}</div>
+                            <div class="album-year">{{album.year}}</div>
+                        </div>
+                    </div>
+
+                </div>
+                
+                <div class="filtered-albums" v-else>
+                    <div                          
+                        v-for="album in filteredAlbums" 
+                        class="single-album-container"
+                    >
+                        <div class="single-album">
+                            <img :src="album.poster" :alt="album.title">
+                            <div class="album-title">{{album.title}}</div>
+                            <div class="album-author">{{album.author}}</div>
+                            <div class="album-year">{{album.year}}</div>
+                        </div>
                     </div>
                 </div>
+                                
                 
             </div>
         </main>
