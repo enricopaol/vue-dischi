@@ -9,7 +9,6 @@ var app = new Vue(
         },
         methods: {
             filterByGenre() {     
-                console.log('filtrati')                           ;
                 let thisGenre = this.selectedGenre;
                 this.filteredAlbums = this.albums.filter((element) => {
                     return thisGenre == 'all' || element.genre == thisGenre                    
@@ -21,11 +20,19 @@ var app = new Vue(
                 .get('https://flynn.boolean.careers/exercises/api/array/music')
                 .then((response) => {
                     let result = response.data;
-                    this.albums = result.response;
+                    
+                    // I order the array of objects by year
+                    const arrayAlbumsOrdered = result.response.sort((a, b) => {
+                        return parseInt(a.year) - parseInt(b.year)
+                    })     
+                    
+                    // I set the albums array = arrayAlbumsOrdered
+                    this.albums = arrayAlbumsOrdered;
+
                     
                     // To get an array with the genres of albums
                     const arrayGenres= [];
-                    result.response.forEach((element) => {
+                    arrayAlbumsOrdered.forEach((element) => {
                         if(!arrayGenres.includes(element.genre)) {
                             arrayGenres.push(element.genre)
                         }
