@@ -5,3 +5,61 @@
     box-sizing: border-box;
 }
 
+/* COMMON */
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+img {
+    width: 100%;
+    display: block;
+}
+
+/* HEADER */
+header {
+    background-color: #2e3b46;
+    padding: 10px;
+}
+
+header .logo {
+    height: 50px;
+    width: 50px;
+}
+
+/* MAIN */
+main {
+    background-color: #1e2e3c;    
+}
+
+.albums-container {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 60px 20px;
+    justify-content: center;
+    align-content: stretch;
+}
+
+.single-album-container {
+    width: calc( 100% / 6 );
+    padding: 20px;
+}
+.single-album {    
+    background-color: #2e3b46;
+    text-align: center;
+    padding: 15px;
+    min-height: 330px;
+}
+
+.album-title {
+    text-transform: uppercase;
+    color: white;
+    font-size: 20px;
+    margin: 15px 0;
+}
+
+.album-author,
+.album-year {
+    color: grey;
+    font-size: 16px;
+}
+

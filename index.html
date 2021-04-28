@@ -15,7 +15,29 @@
 <body>
     
     <div id="root">
+        <!-- HEADER -->
+        <header>
+            <div class="logo">
+                <img src="img/download.png" alt="logo-spotify">
+            </div>
+        </header>
 
+        <!-- MAIN -->
+        <main>
+
+            <div class="albums-container">
+
+                <div v-for="album in albums" class="single-album-container">
+                    <div class="single-album">
+                        <img :src="album.poster" :alt="album.title">
+                        <div class="album-title">{{album.title}}</div>
+                        <div class="album-author">{{album.author}}</div>
+                        <div class="album-year">{{album.year}}</div>
+                    </div>
+                </div>
+                
+            </div>
+        </main>
     </div>
 
     <script src="js/script.js"></script>
